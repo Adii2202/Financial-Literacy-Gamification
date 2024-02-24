@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- moved to template/src/assets/font-styles.css as it was not available for sdks-->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet"> -->
+
+    <base href="/">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+</head>
+<body>
+    <style>
+        /* .video-container > *{
+            background-color: #000 !important;
+
+        }
+        .video-container video{
+            background-color: #000;
+        }
+        .video-container{
+            background-color: #000;
+        } */
+        /* *:active {
+            outline: none;
+        } */
+    /* Webkit (Chrome, Safari) */
+    ::-webkit-scrollbar {
+    width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background-color: #777;
+    border-radius: 2px;
+    }
+
+    /* Firefox */
+    html {
+    scrollbar-width: thin;
+    scrollbar-color: transparent #777;
+    }
+
+    </style>
+<div id="react-app" style="
+    height: 100vh;
+    max-height: -webkit-fill-available;
+    display: flex;
+">
+
+</div>
+</body>
+</html>
