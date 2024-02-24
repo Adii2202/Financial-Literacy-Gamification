@@ -1,0 +1,102 @@
+{
+    "data":[
+       {
+          "name":"views",
+          "period":"day",
+          "values":[
+             {"value":1200,"end_time":"11 Jan 2022 10 AM"},
+             {"value":1300,"end_time":"12 Jan 2022 11 AM"},
+             {"value":1450,"end_time":"13 Jan 2022 02 PM"},
+             {"value":1600,"end_time":"14 Jan 2022 04 PM"},
+             {"value":1280,"end_time":"15 Jan 2022 09 AM"},
+             {"value":1375,"end_time":"16 Jan 2022 01 PM"},
+             {"value":1420,"end_time":"17 Jan 2022 03 PM"},
+             {"value":1555,"end_time":"18 Jan 2022 05 PM"},
+             {"value":1480,"end_time":"19 Jan 2022 08 AM"},
+             {"value":1600,"end_time":"20 Jan 2022 12 PM"}
+          ],
+          "title":"Views",
+          "description":"Total number of times videos on the channel have been viewed",
+          "id":"youtube_channel_id/insights/views/day"
+       },
+       {
+          "name":"subscribers",
+          "period":"day",
+          "values":[
+             {"value":25,"end_time":"11 Jan 2022 10 AM"},
+             {"value":28,"end_time":"12 Jan 2022 11 AM"},
+             {"value":32,"end_time":"13 Jan 2022 02 PM"},
+             {"value":35,"end_time":"14 Jan 2022 04 PM"},
+             {"value":30,"end_time":"15 Jan 2022 09 AM"},
+             {"value":33,"end_time":"16 Jan 2022 01 PM"},
+             {"value":38,"end_time":"17 Jan 2022 03 PM"},
+             {"value":42,"end_time":"18 Jan 2022 05 PM"},
+             {"value":40,"end_time":"19 Jan 2022 08 AM"},
+             {"value":45,"end_time":"20 Jan 2022 12 PM"}
+          ],
+          "title":"Subscribers",
+          "description":"Total number of new subscribers to the channel",
+          "id":"youtube_channel_id/insights/subscribers/day"
+       },
+       {
+          "name":"engagement",
+          "period":"day",
+          "values":[
+            {
+                "name": "11 Jan 2022",
+                "likes": 800,
+                "dislikes": 50
+              },
+              {
+                "name": "12 Jan 2022",
+                "likes": 900,
+                "dislikes": 60
+              },
+              {
+                "name": "13 Jan 2022",
+                "likes": 1000,
+                "dislikes": 70
+              },
+              {
+                "name": "14 Jan 2022",
+                "likes": 1100,
+                "dislikes": 80
+              },
+              {
+                "name": "15 Jan 2022",
+                "likes": 850,
+                "dislikes": 45
+              },
+              {
+                "name": "16 Jan 2022",
+                "likes": 920,
+                "dislikes": 55
+              },
+              {
+                "name": "17 Jan 2022",
+                "likes": 750, 
+                "dislikes": 900 
+              },
+              {
+                "name": "18 Jan 2022",
+                "likes": 1050,
+                "dislikes": 75
+              },
+              {
+                "name": "19 Jan 2022",
+                "likes": 980,
+                "dislikes": 70
+              },
+              {
+                "name": "20 Jan 2022",
+                "likes": 1100,
+                "dislikes": 80
+              }
+          ],
+          "title":"Engagement",
+          "description":"Total number of likes and dislikes on videos in the channel",
+          "id":"youtube_channel_id/insights/engagement/day"
+       }
+    ]
+ }
+ 
