@@ -148,11 +148,11 @@ export const MuteAllVideoButton = (props: MuteAllVideoButtonProps) => {
 };
 
 const HostControlView = () => {
-  const {question, setQuestion, answers, setAnswers, setIsModalOpen} =
+  const { question, setQuestion, answers, setAnswers, setIsModalOpen } =
     useContext(PollContext);
   return (
     <View style={style.container}>
-      <View style={{marginTop: 20}}>
+      <View style={{ marginTop: 20 }}>
         <TextInput
           value={question}
           onChangeText={setQuestion}
@@ -160,13 +160,13 @@ const HostControlView = () => {
           style={style.textInput}
         />
         {answers.map((answer, i) => (
-          <View key={i} style={{marginTop: 10}}>
+          <View key={i} style={{ marginTop: 10 }}>
             <TextInput
               value={answer.option}
-              onChangeText={value =>
+              onChangeText={(value) =>
                 setAnswers([
                   ...answers.slice(0, i),
-                  {option: value, votes: 0},
+                  { option: value, votes: 0 },
                   ...answers.slice(i + 1),
                 ])
               }
