@@ -13,6 +13,7 @@ import React, {useState, useContext} from 'react';
 import {Platform} from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
 import AppWrapper from './AppWrapper';
+import PollContextProvider from './components/PollContext';
 import {
   RoomInfoContextInterface,
   RoomInfoDefaultValue,
@@ -21,7 +22,7 @@ import {
 import {SetRoomInfoProvider} from './components/room-info/useSetRoomInfo';
 import {ShareLinkProvider} from './components/useShareLink';
 import AppRoutes from './AppRoutes';
-import PollContextProvider from './components/PollContext';
+
 // hook can't be used in the outside react function calls. so directly checking the platform.
 if (Platform.OS === 'ios') {
   KeyboardManager.setEnable(true);
@@ -78,17 +79,19 @@ const App: React.FC = () => {
     useState<RoomInfoContextInterface>(RoomInfoDefaultValue);
 
   return (
-    <PollContextProvider>
-      <AppWrapper>
-        <SetRoomInfoProvider value={{setRoomInfo}}>
-          <RoomInfoProvider value={{...roomInfo}}>
-            <ShareLinkProvider>
-              <AppRoutes />
-            </ShareLinkProvider>
-          </RoomInfoProvider>
-        </SetRoomInfoProvider>
-      </AppWrapper>
-    </PollContextProvider>
+    <>
+      <PollContextProvider>
+        <AppWrapper>
+          <SetRoomInfoProvider value={{setRoomInfo}}>
+            <RoomInfoProvider value={{...roomInfo}}>
+              <ShareLinkProvider>
+                <AppRoutes />
+              </ShareLinkProvider>
+            </RoomInfoProvider>
+          </SetRoomInfoProvider>
+        </AppWrapper>
+      </PollContextProvider>
+    </>
   );
 };
 

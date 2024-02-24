@@ -37,6 +37,9 @@ function NavBar() {
   const [mopen, setOpen] = useState(false);
   const [nopen, setNOpen] = useState(false);
 
+  const openNewPage = () => {
+    window.open("http://localhost:9000/", "_blank");
+  };
   const handleNOpen = () => {
     setNOpen(true);
   };
@@ -70,6 +73,7 @@ function NavBar() {
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
+
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
@@ -230,6 +234,14 @@ function NavBar() {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <button
+                  onClick={openNewPage}
+                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 focus:outline-none focus:border-indigo-900 focus:ring focus:ring-indigo-200 disabled:opacity-25 transition"
+                >
+                  Stream
+                </button>
               </div>
             </div>
           </div>

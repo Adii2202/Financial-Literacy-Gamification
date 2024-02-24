@@ -26,6 +26,7 @@ import {useParams, useHistory} from '../components/Router';
 import RtmConfigure from '../components/RTMConfigure';
 import DeviceConfigure from '../components/DeviceConfigure';
 import Logo from '../subComponents/Logo';
+import Poll from '../components/Poll';
 import {
   useHasBrandLogo,
   isArray,
@@ -423,21 +424,26 @@ const VideoCall: React.FC = () => {
                                                           )}
                                                           <VBProvider>
                                                             <SdkMuteToggleListener>
-                                                              {callActive ? (
-                                                                <VideoMeetingDataProvider>
-                                                                  <VideoCallProvider>
-                                                                    <DisableChatProvider>
-                                                                      {$config.ENABLE_WHITEBOARD &&
-                                                                      isWebInternal() ? (
-                                                                        <WhiteboardConfigure>
+                                                              {callActive && (
+                                                                <Poll />
+                                                              ) ? (
+                                                                <>
+                                                                  <Poll />
+                                                                  <VideoMeetingDataProvider>
+                                                                    <VideoCallProvider>
+                                                                      <DisableChatProvider>
+                                                                        {$config.ENABLE_WHITEBOARD &&
+                                                                        isWebInternal() ? (
+                                                                          <WhiteboardConfigure>
+                                                                            <VideoCallScreen />
+                                                                          </WhiteboardConfigure>
+                                                                        ) : (
                                                                           <VideoCallScreen />
-                                                                        </WhiteboardConfigure>
-                                                                      ) : (
-                                                                        <VideoCallScreen />
-                                                                      )}
-                                                                    </DisableChatProvider>
-                                                                  </VideoCallProvider>
-                                                                </VideoMeetingDataProvider>
+                                                                        )}
+                                                                      </DisableChatProvider>
+                                                                    </VideoCallProvider>
+                                                                  </VideoMeetingDataProvider>
+                                                                </>
                                                               ) : $config.PRECALL ? (
                                                                 <PreCallProvider
                                                                   value={{
