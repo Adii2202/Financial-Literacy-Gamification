@@ -44,4 +44,6 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
+
+# add .env file
 .env
