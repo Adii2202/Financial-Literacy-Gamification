@@ -1,3 +1,4 @@
+import { QuestionAnswer } from "@mui/icons-material";
 import React from "react";
 
 const lessonContent = {
@@ -11,11 +12,13 @@ const lessonContent = {
 
 function Lesson() {
   return (
-    <div className="lesson-container mx-auto max-w-2xl p-4">
-      <h1 className="text-2xl font-bold mb-4">
+    <div className="lesson-container mx-auto max-w-2xl p-4 flex flex-col items-center justify-evenly">
+      <h1 className="text-2xl font-bold mb-4 hover:underline">
         {lessonContent.budgeting.title}
       </h1>
-      <p className="mb-4">{lessonContent.budgeting.content}</p>
+      <p className="mb-6 ring ring-gray p-4 rounded-xl shadow-md hover:shadow-xl hover:underline">
+        {lessonContent.budgeting.content}
+      </p>
 
       <div className="video-container mb-4">
         <iframe
@@ -35,7 +38,9 @@ function Lesson() {
         <ul>
           {/* You can add list items for different lessons here */}
           <li>
-            <a href="#">Budgeting Basics</a>
+            <a href="#">
+              Budgeting Basics
+            </a>
           </li>
           {/* Add more lessons as needed */}
         </ul>

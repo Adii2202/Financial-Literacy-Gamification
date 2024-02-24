@@ -29,6 +29,7 @@ import "./App.css";
 import Stock from "./pages/Stock";
 import Savings from "./pages/Savings";
 import Learning from "./pages/Learning";
+import LeaderBoard from "./pages/FriendsPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -114,7 +115,7 @@ function App() {
         },
         {
           path: "/leaderboard",
-          element: <FriendsPage />,
+          element: <LeaderBoard />,
         },
         {
           path: "/monetary",

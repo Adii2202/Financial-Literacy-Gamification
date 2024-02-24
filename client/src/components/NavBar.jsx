@@ -11,6 +11,9 @@ import ExpIcon from "../assets/exp-icon.png";
 import DailyModal from "./DailyModal";
 import NotiModal from "./NotiModal";
 import EmailIcon from "@mui/icons-material/Email";
+import { Leaderboard, Logout, Person } from "@mui/icons-material";
+import { AiOutlineProfile } from "react-icons/ai";
+import { RiProfileLine } from "react-icons/ri";
 
 const navigation = [
   { name: "Home", href: "/home", current: false },
@@ -195,7 +198,20 @@ function NavBar() {
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Your Profile
+                            <Person /> Your Profile
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="/leaderboard"
+                            className={classNames(
+                              active ? "bg-gray bg-opacity-40" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            <Leaderboard /> LeaderBoard
                           </a>
                         )}
                       </Menu.Item>
@@ -211,7 +227,7 @@ function NavBar() {
                               "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                             )}
                           >
-                            Sign out
+                            <Logout /> Sign out
                           </a>
                         )}
                       </Menu.Item>
