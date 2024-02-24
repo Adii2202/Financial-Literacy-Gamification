@@ -1,0 +1,61 @@
+{
+  "data":[
+     {
+        "name":"impressions",
+        "period":"day",
+        "values":[
+           {"value":32,"end_time":"11 Jan 2018 09 AM"},
+           {"value":32,"end_time":"12 Jan 2018 03 PM"},
+           {"value":45,"end_time":"13 Jan 2018 07 PM"},
+           {"value":50,"end_time":"14 Jan 2018 09 AM"},
+           {"value":28,"end_time":"15 Jan 2018 03 PM"},
+           {"value":37,"end_time":"16 Jan 2018 07 PM"},
+           {"value":42,"end_time":"17 Jan 2018 09 AM"},
+           {"value":55,"end_time":"18 Jan 2018 03 PM"},
+           {"value":48,"end_time":"19 Jan 2018 07 PM"},
+           {"value":60,"end_time":"20 Jan 2018 09 AM"}
+        ],
+        "title":"Impressions",
+        "description":"Total number of times the Business Account's media objects have been viewed",
+        "id":"instagram_business_account_id/insights/impressions/day"
+     },
+     {
+        "name":"reach",
+        "period":"day",
+        "values":[
+           {"value":12,"end_time":"11 Jan 2018 09 AM"},
+           {"value":12,"end_time":"12 Jan 2018 03 PM"},
+           {"value":20,"end_time":"13 Jan 2018 07 PM"},
+           {"value":18,"end_time":"14 Jan 2018 09 AM"},
+           {"value":15,"end_time":"15 Jan 2018 03 PM"},
+           {"value":30,"end_time":"16 Jan 2018 07 PM"},
+           {"value":25,"end_time":"17 Jan 2018 09 AM"},
+           {"value":35,"end_time":"18 Jan 2018 03 PM"},
+           {"value":40,"end_time":"19 Jan 2018 07 PM"},
+           {"value":45,"end_time":"20 Jan 2018 09 AM"}
+        ],
+        "title":"Reach",
+        "description":"Total number of times the Business Account's media objects have been uniquely viewed",
+        "id":"instagram_business_account_id/insights/reach/day"
+     },
+     {
+        "name":"profile_views",
+        "period":"day",
+        "values":[
+           {"value":15,"end_time":"11 Jan 2018 09 AM"},
+           {"value":15,"end_time":"12 Jan 2018 03 PM"},
+           {"value":18,"end_time":"13 Jan 2018 07 PM"},
+           {"value":22,"end_time":"14 Jan 2018 09 AM"},
+           {"value":10,"end_time":"15 Jan 2018 03 PM"},
+           {"value":27,"end_time":"16 Jan 2018 07 PM"},
+           {"value":30,"end_time":"17 Jan 2018 09 AM"},
+           {"value":25,"end_time":"18 Jan 2018 03 PM"},
+           {"value":28,"end_time":"19 Jan 2018 07 PM"},
+           {"value":32,"end_time":"20 Jan 2018 09 AM"}
+        ],
+        "title":"Profile Views",
+        "description":"Total number of users who have viewed the Business Account's profile within the specified period",
+        "id":"instagram_business_account_id/insights/profile_views/day"
+     }
+  ]
+}
