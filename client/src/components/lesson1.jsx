@@ -29,15 +29,12 @@ function Lesson1() {
         ></iframe>
       </div>
 
-      {/* Playlist */}
       <div className="playlist mt-4">
         <h2 className="text-lg font-semibold mb-2">Playlist</h2>
         <ul>
-          {/* You can add list items for different lessons here */}
           <li>
             <a href="#">Investing Essentials</a>
           </li>
-          {/* Add more lessons as needed */}
         </ul>
       </div>
     </div>

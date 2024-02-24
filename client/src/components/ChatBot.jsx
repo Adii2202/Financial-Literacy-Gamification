@@ -1,49 +1,54 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  FiEdit,
-  FiChevronDown,
-  FiTrash,
-  FiShare,
-  FiPlusSquare,
-  FiAlignCenter,
-} from "react-icons/fi";
+  fetchLLMInference,
+  selectInferenceResult,
+  BotOpen,
+} from "../redux/features/llmslice";
+
 import { motion } from "framer-motion";
-import { Dispatch, SetStateAction, useState } from "react";
-import { GoDependabot } from "react-icons/go";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
+import { Divider, IconButton, TextField } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 import { AiFillRobot } from "react-icons/ai";
 import { RiRobot2Fill } from "react-icons/ri";
-import Divider from "@mui/material/Divider";
-import SendIcon from "@mui/icons-material/Send";
-import { IconButton, TextField } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const StaggeredDropDown = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
   const [msg, setMsg] = useState("");
   const [msgList, setMsgList] = useState([]);
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const inferenceResult = useSelector(selectInferenceResult);
+    const isBotOpen = useSelector((state) => state.BotUI.isBotOpen);
 
-  const sendMessage = async () => {
+    const toggleBot = () => {
+      dispatch(BotOpen.actions.togglebot()); 
+    };
+
+    const setOpen = ()=> {
+      dispatch(BotOpen.actions.setBot({payload:true}));
+    }
+
+    const setClose = ()=>{
+      dispatch(BotOpen.actions.setBot({payload:false}));
+    }
+
+
+  const sendMessage = () => {
     if (!msg) {
       toast.error("Message cannot be empty");
       return;
     }
     setMsgList([...msgList, { msg, type: "user" }]);
     setMsg("");
-    const formData = new FormData();
-    formData.append("text", msg);
-    await axios
-      .post("http://127.0.0.1:5000/chat", formData)
-      .then((res) => {
-        console.log(res.data.toString());
-        setMsgList([...msgList, { msg: res.data.toString(), type: "bot" }]);
-        console(msgList);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(fetchLLMInference(msg));
   };
+
+  useEffect(() => {
+    if (inferenceResult) {
+      setMsgList([...msgList, { msg: inferenceResult, type: "bot" }]);
+    }
+  }, [inferenceResult]);
 
   return (
     <div className="flex items-center justify-center">
