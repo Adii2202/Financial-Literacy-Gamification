@@ -99,10 +99,10 @@ function App() {
           path: "/tasks",
           element: <TaskPages />,
         },
-        // {
-        //   path: "/friends",
-        //   element: <FriendsPage />,
-        // },
+        {
+          path: "/leaderboard",
+          element: <FriendsPage />,
+        },
         {
           path: "/monetary",
           element: <Monetary />,

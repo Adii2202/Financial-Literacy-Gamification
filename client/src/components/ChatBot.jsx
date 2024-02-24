@@ -36,8 +36,8 @@ const StaggeredDropDown = () => {
     await axios
       .post("http://127.0.0.1:5000/chat", formData)
       .then((res) => {
-        console.log(res.data);
-        setMsgList([...msgList, { msg: res.data, type: "bot" }]);
+        console.log(res.data.toString());
+        setMsgList([...msgList, { msg: res.data.toString(), type: "bot" }]);
         console(msgList);
       })
       .catch((err) => {
