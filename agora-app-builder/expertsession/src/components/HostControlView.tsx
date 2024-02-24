@@ -9,19 +9,22 @@
  information visit https://appbuilder.agora.io. 
 *********************************************
 */
-import React, {useRef, useState} from 'react';
-import {View, StyleSheet, useWindowDimensions} from 'react-native';
+import React, {useContext, useRef, useState} from 'react';
+import {View, StyleSheet, Text, useWindowDimensions} from 'react-native';
 import {useString} from '../utils/useString';
 import useRemoteMute, {MUTE_REMOTE_TYPE} from '../utils/useRemoteMute';
 import TertiaryButton from '../atoms/TertiaryButton';
 import Spacer from '../atoms/Spacer';
 import RemoteMutePopup from '../subComponents/RemoteMutePopup';
 import {calculatePosition} from '../utils/common';
+import TextInput from '../atoms/TextInput';
+import {PollContext} from './PollContext';
 import {
   I18nMuteType,
   peoplePanelMuteAllMicBtnText,
   peoplePanelTurnoffAllCameraBtnText,
 } from '../language/default-labels/videoCallScreenLabels';
+import PrimaryButton from '../atoms/PrimaryButton';
 
 export interface MuteAllAudioButtonProps {
   render?: (onPress: () => void) => JSX.Element;
@@ -145,21 +148,67 @@ export const MuteAllVideoButton = (props: MuteAllVideoButtonProps) => {
 };
 
 const HostControlView = () => {
+  const { question, setQuestion, answers, setAnswers, setIsModalOpen } =
+    useContext(PollContext);
   return (
     <View style={style.container}>
-      {!$config.AUDIO_ROOM && <MuteAllVideoButton />}
-      <Spacer horizontal size={16} />
-      <MuteAllAudioButton />
+      <View style={{ marginTop: 20 }}>
+        <TextInput
+          value={question}
+          onChangeText={setQuestion}
+          placeholder="Poll Question"
+          style={style.textInput}
+        />
+        {answers.map((answer, i) => (
+          <View key={i} style={{ marginTop: 10 }}>
+            <TextInput
+              value={answer.option}
+              onChangeText={(value) =>
+                setAnswers([
+                  ...answers.slice(0, i),
+                  { option: value, votes: 0 },
+                  ...answers.slice(i + 1),
+                ])
+              }
+              placeholder={`Poll Answer ${i + 1}`}
+              style={style.textInput}
+            />
+          </View>
+        ))}
+      </View>
+      <View style={style.buttonsContainer}>
+        <PrimaryButton
+          onPress={() => {
+            setIsModalOpen(true);
+          }}
+          text="Start Poll"
+        />
+      </View>
     </View>
   );
 };
-
 const style = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 20, // Add padding to the sides for better layout
   },
-  btn: {},
+  buttonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 20, // Add padding to the sides for better layout
+  },
+  textInput: {
+    width: '100%', // Take up full width
+    height: 40, // Adjust height as needed
+    backgroundColor: 'transparent', // Make text input background transparent
+    borderWidth: 1, // Add border for visibility
+    borderColor: 'white', // Border color white
+    borderRadius: 5, // Add some border radius for styling
+    paddingHorizontal: 10, // Add padding horizontally
+    color: 'white', // Text color white
+  },
 });
 
 export default HostControlView;
