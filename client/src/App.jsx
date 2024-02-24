@@ -17,9 +17,18 @@ import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import StaggeredDropDown from "./components/ChatBot";
+import {
+  Budgeting,
+  BudgetingQAndA,
+  Investing,
+  InvestingQAndA,
+  Financing,
+  FinancingQAndA,
+} from "./pages/Learning";
 import "./App.css";
 import Stock from "./pages/Stock";
 import Savings from "./pages/Savings";
+import Learning from "./pages/Learning";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -42,7 +51,7 @@ function App() {
             pauseOnFocusLoss={false}
             draggable
             pauseOnHover={false}
-            theme="light"
+            theme="dark"
           />
           {token && <NavBar />}
           {!isNavBarOpen && (
@@ -70,6 +79,10 @@ function App() {
         {
           path: "/home",
           element: <Home />,
+        },
+        {
+          path: "/learning",
+          element: <Learning />,
         },
         {
           path: "/blog",
@@ -106,6 +119,30 @@ function App() {
         {
           path: "/monetary",
           element: <Monetary />,
+        },
+        {
+          path: "/budgeting",
+          element: <Budgeting />,
+        },
+        {
+          path: "/budgeting/qanda",
+          element: <BudgetingQAndA />,
+        },
+        {
+          path: "/investing",
+          element: <Investing />,
+        },
+        {
+          path: "/investing/qanda",
+          element: <InvestingQAndA />,
+        },
+        {
+          path: "/financing",
+          element: <Financing />,
+        },
+        {
+          path: "financing/qanda",
+          element: <FinancingQAndA />,
         },
       ],
     },

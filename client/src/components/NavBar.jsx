@@ -17,7 +17,7 @@ const navigation = [
   { name: 'Financial Habits', href: '/tasks', current: false },
   { name: 'Smart Investing', href: '/stock', current: false },
   { name: 'Smart Savings', href: '/savings', current: false },
-  // { name: 'Friends', href: '/friends', current: true },
+  { name: 'Learning', href: '/learning', current:false},
   { name: 'Party', href: '/party', current: false },
   { name: 'Blog', href: '/blog', current: false },
 ]
