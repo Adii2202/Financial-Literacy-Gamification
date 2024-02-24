@@ -35,18 +35,18 @@ function useRecordingLayoutQuery() {
         passphrase: phrase,
       },
     })
-      .then((res) => {
+      .then(res => {
         if (res.data.setPresenter === 'success') {
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
 
   const executeNormalQuery = () => {
     setNormalQuery({variables: {passphrase: phrase}})
-      .then((res) => {
+      .then(res => {
         if (res.data.stopRecordingSession === 'success') {
           // Once the backend sucessfuly stops recording,
           // send a control message to everbody in the channel indicating that cloud recording is now inactive.
@@ -55,7 +55,7 @@ function useRecordingLayoutQuery() {
           // setScreenshareActive(false);
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
