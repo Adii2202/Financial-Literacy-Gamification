@@ -1,0 +1,26 @@
+.yes-button {
+    background-color: #34d399;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .yes-button:hover {
+    background-color: #10b981;
+  }
+  
+  .no-button {
+    background-color: #ef4444;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .no-button:hover {
+    background-color: #dc2626;
+  }
+  
