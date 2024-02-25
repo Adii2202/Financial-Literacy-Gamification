@@ -747,6 +747,57 @@ class UserController {
     }
   };
 
+  decreaseCoins = async (req, res) => {
+    try {
+      const { email, coins } = req.body;
+      const user = await User.findOne({
+        email,
+      });
+      if (!user)
+        return res.status(404).json({ message: "User does not exist!" });
+      if (user.coins < coins) user.coins = 0;
+      else user.coins -= coins;
+      user.gaming.exp += 3;
+      if (user.gaming.exp >= user.gaming.maxExp) {
+        user.gaming.exp -= user.gaming.maxExp;
+        user.gaming.maxExp += 50;
+        user.gaming.level += 1;
+        user.gaming.maxHealth += 10;
+        user.gaming.health = user.gaming.maxHealth;
+      }
+      await user.save();
+      res.status(200).json({ message: "success" });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  };
+
+  increaseCoins = async (req, res) => {
+    try {
+      const { email, coins } = req.body;
+      const user = await User.findOne({
+        email,
+      });
+      if (!user)
+        return res.status(404).json({ message: "User does not exist!" });
+      user.coins += coins;
+      user.gaming.exp += 4;
+      if (user.gaming.exp >= user.gaming.maxExp) {
+        user.gaming.exp -= user.gaming.maxExp;
+        user.gaming.maxExp += 50;
+        user.gaming.level += 1;
+        user.gaming.maxHealth += 10;
+        user.gaming.health = user.gaming.maxHealth;
+      }
+      await user.save();
+      res.status(200).json({ message: "success" });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  };
+
   setAvatar = async (req, res) => {
     try {
       const { email, avatar } = req.body;

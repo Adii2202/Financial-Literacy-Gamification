@@ -52,6 +52,12 @@ class Api {
   static async loginUser(data) {
     return await api.post("api/user/login", data);
   }
+  static async incrcoins(data) {
+    return await api.post("api/user/increase-coins", data);
+  }
+  static async decrcoins(data) {
+    return await api.post("api/user/decrease-coins", data);
+  }
 
   static async verifyOtp(data) {
     return await api.post("api/user/verify-otp", data);

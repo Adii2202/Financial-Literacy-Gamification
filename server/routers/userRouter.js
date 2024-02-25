@@ -15,6 +15,8 @@ uR.post('/update', uC.update);
 uR.post('/login', uC.login);
 uR.post('/verify-otp', uC.verifyOtp);
 uR.post('/get-user', uC.sendUserInfo);
+uR.post('/increase-coins', uC.increaseCoins);
+uR.post('/decrease-coins', uC.decreaseCoins);
 uR.post('/add-to-inventory', uC.addToInventory);
 uR.post('/remove-from-inventory', uC.removeFromInventory);
 uR.post('/save-quiz',uC.saveQuizSubmission);

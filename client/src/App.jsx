@@ -30,6 +30,7 @@ import Stock from "./pages/Stock";
 import Savings from "./pages/Savings";
 import Learning from "./pages/Learning";
 import LeaderBoard from "./pages/FriendsPage";
+import StockGame from "./pages/stockgame";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -103,7 +104,7 @@ function App() {
         },
         {
           path: "/stock",
-          element: <Stock />,
+          element: <StockGame/>,
         },
         {
           path: "/savings",
