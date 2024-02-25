@@ -9,6 +9,13 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import Api from "../../api";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchLLMInference,
+  selectInferenceResult,
+  BotOpen,
+  isbotOpen,
+} from "../../redux/features/llmslice";
 
 const QuestionsForm2 = () => {
   var total = 0;
@@ -23,6 +30,21 @@ const QuestionsForm2 = () => {
     JSON.parse(localStorage.getItem("user"))
   );
   const [can, setCan] = useState(true);
+  const dispatch = useDispatch();
+  const inferenceResult = useSelector(selectInferenceResult);
+  const isBotOpen = useSelector(isbotOpen);
+  const toggleBot = () => {
+    dispatch(BotOpen.actions.togglebot());
+  };
+  const setOpen = () => {
+    dispatch(BotOpen.actions.setBot({ payload: true }));
+  };
+  const setClose = () => {
+    dispatch(BotOpen.actions.setBot({ payload: false }));
+  };
+  const sendMessage = (msg) => {
+    dispatch(fetchLLMInference(msg));
+  };
 
   useEffect(() => {
     const callfirst = async () => {
@@ -126,6 +148,13 @@ const QuestionsForm2 = () => {
   };
 
   const handlesubmitwithNext = () => {
+    if(!can){
+      return;
+    }
+    if(answers[currentQuestion] == ""){
+      toast.error("Please select an option to submit");
+      return;
+    }
     if (
       answers[currentQuestion] == correctChoices[currentQuestion] &&
       !cursubmitted[currentQuestion]
@@ -399,6 +428,28 @@ const QuestionsForm2 = () => {
           <motion.h3>
             Correct option is: {correctChoices[currentQuestion]}
           </motion.h3>
+          {!isBotOpen ? (
+            <motion.button
+              onClick={() => {
+                setOpen();
+                sendMessage(
+                  `I need help with Budgeting, I want to know the correct answer for question: ${questions[currentQuestion]} and the explanation for the correct answer. from options: ${choices[currentQuestion].toString()}`
+                );
+              }}
+              className="bg-green-500 p-2 rounded-lg"
+            >
+              Ask for help
+            </motion.button>
+          ) : (
+            <motion.button
+              onClick={() => {
+                setClose();
+              }}
+              className="bg-red-500 p-2 rounded-lg"
+            >
+              Window on right side will pop up, please wait to get the answer, after that you can ask for help again in same window.
+            </motion.button>
+          )}
         </motion.div>
       ) : null}
     </motion.div>

@@ -4,6 +4,7 @@ import {
   fetchLLMInference,
   selectInferenceResult,
   BotOpen,
+  isbotOpen,
 } from "../redux/features/llmslice";
 
 import { motion } from "framer-motion";
@@ -19,20 +20,19 @@ const StaggeredDropDown = () => {
   const [msgList, setMsgList] = useState([]);
   const dispatch = useDispatch();
   const inferenceResult = useSelector(selectInferenceResult);
-    const isBotOpen = useSelector((state) => state.BotUI.isBotOpen);
+  const isBotOpen = useSelector(isbotOpen);
 
-    const toggleBot = () => {
-      dispatch(BotOpen.actions.togglebot()); 
-    };
+  const toggleBot = () => {
+    dispatch(BotOpen.actions.togglebot());
+  };
 
-    const setOpen = ()=> {
-      dispatch(BotOpen.actions.setBot({payload:true}));
-    }
+  const setOpen = () => {
+    dispatch(BotOpen.actions.setBot({ payload: true }));
+  };
 
-    const setClose = ()=>{
-      dispatch(BotOpen.actions.setBot({payload:false}));
-    }
-
+  const setClose = () => {
+    dispatch(BotOpen.actions.setBot({ payload: false }));
+  };
 
   const sendMessage = () => {
     if (!msg) {
@@ -48,11 +48,11 @@ const StaggeredDropDown = () => {
     if (inferenceResult) {
       setMsgList([...msgList, { msg: inferenceResult, type: "bot" }]);
     }
-  }, [inferenceResult]);
+  }, [useSelector(selectInferenceResult)]);
 
   return (
     <div className="flex items-center justify-center">
-      <motion.div animate={open ? "open" : "closed"} className="relative">
+      <motion.div animate={isBotOpen ? "open" : "closed"} className="relative">
         <motion.ul
           initial={wrapperVariants.closed}
           variants={wrapperVariants}
@@ -135,7 +135,7 @@ const StaggeredDropDown = () => {
           </div>
         </motion.ul>
         <button
-          onClick={() => setOpen((pv) => !pv)}
+          onClick={toggleBot}
           className="flex items-center gap-2 w-16 h-16 justify-center p-4 rounded-full text-indigo-50 bg-indigo-500 hover:bg-indigo-500 transition-colors"
         >
           <motion.span variants={iconVariants}>

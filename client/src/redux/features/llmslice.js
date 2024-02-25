@@ -30,8 +30,7 @@ export const BotOpen = createSlice({
   },
 });
 
-
-const llmInferenceSlice = createSlice({
+export const llmInferenceSlice = createSlice({
   name: "llmInference",
   initialState: {
     inferenceResult: "",
@@ -56,5 +55,7 @@ const llmInferenceSlice = createSlice({
 
 export const selectInferenceResult = (state) =>
   state.llmInference.inferenceResult;
+
+export const isbotOpen = (state) => state.BotUI.isBotOpen;
 
 export default llmInferenceSlice.reducer;

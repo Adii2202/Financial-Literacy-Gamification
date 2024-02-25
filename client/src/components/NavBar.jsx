@@ -5,13 +5,13 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import WhatshotOutlinedIcon from "@mui/icons-material/WhatshotOutlined";
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import logo from "../assets/logo-hck.svg";
 import ExpIcon from "../assets/exp-icon.png";
 import DailyModal from "./DailyModal";
 import NotiModal from "./NotiModal";
 import EmailIcon from "@mui/icons-material/Email";
-import { Leaderboard, Logout, Person } from "@mui/icons-material";
+import { Leaderboard, Logout, Person, Stream } from "@mui/icons-material";
 import { AiOutlineProfile } from "react-icons/ai";
 import { RiProfileLine } from "react-icons/ri";
 
@@ -195,7 +195,7 @@ function NavBar() {
                             href="/profile"
                             className={classNames(
                               active ? "bg-gray bg-opacity-40" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              "block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:font-bold"
                             )}
                           >
                             <Person /> Your Profile
@@ -208,13 +208,28 @@ function NavBar() {
                             href="/leaderboard"
                             className={classNames(
                               active ? "bg-gray bg-opacity-40" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              "block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:font-bold"
                             )}
                           >
                             <Leaderboard /> LeaderBoard
                           </a>
                         )}
                       </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            type="button"
+                            onClick={openNewPage}
+                            className={classNames(
+                              active ? "bg-gray bg-opacity-40" : "",
+                              "block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:font-bold"
+                            )}
+                          >
+                            <Stream /> Stream
+                          </a>
+                        )}
+                      </Menu.Item>
+
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -234,14 +249,6 @@ function NavBar() {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  onClick={openNewPage}
-                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 focus:outline-none focus:border-indigo-900 focus:ring focus:ring-indigo-200 disabled:opacity-25 transition"
-                >
-                  Stream
-                </button>
               </div>
             </div>
           </div>
