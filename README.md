@@ -4,4 +4,4 @@
 
 
 # Block-Diagram
-![diagram-export-2-25-2024-6_26_57-AM](https://github.com/gamechanger2580/Tech-A-Thon/assets/52589175/761116eb-0d68-4fdc-af0f-67de12dfc0da)
+![image](https://github.com/gamechanger2580/Tech-A-Thon/assets/101705932/16a2f684-cb09-49ed-911c-9c99a17a9717)

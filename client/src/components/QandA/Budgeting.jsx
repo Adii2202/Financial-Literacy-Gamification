@@ -148,10 +148,10 @@ const QuestionsForm2 = () => {
   };
 
   const handlesubmitwithNext = () => {
-    if(!can){
+    if (!can) {
       return;
     }
-    if(answers[currentQuestion] == ""){
+    if (answers[currentQuestion] == "") {
       toast.error("Please select an option to submit");
       return;
     }
@@ -424,7 +424,7 @@ const QuestionsForm2 = () => {
         </div>
       </FormControl>
       {showcurr ? (
-        <motion.div className="flex flex-col justify-evenly items-center w-100 min-h-[300px]">
+        <motion.div className="flex flex-col justify-evenly items-center w-100 min-h-[200px]">
           <motion.h3>
             Correct option is: {correctChoices[currentQuestion]}
           </motion.h3>
@@ -433,7 +433,11 @@ const QuestionsForm2 = () => {
               onClick={() => {
                 setOpen();
                 sendMessage(
-                  `I need help with Budgeting, I want to know the correct answer for question: ${questions[currentQuestion]} and the explanation for the correct answer. from options: ${choices[currentQuestion].toString()}`
+                  `I need help with Budgeting, I want to know the correct answer for question: ${
+                    questions[currentQuestion]
+                  } and the explanation for the correct answer. from options: ${choices[
+                    currentQuestion
+                  ].toString()}`
                 );
               }}
               className="bg-green-500 p-2 rounded-lg"
@@ -443,11 +447,12 @@ const QuestionsForm2 = () => {
           ) : (
             <motion.button
               onClick={() => {
-                setClose();
+                toggleBot();
               }}
-              className="bg-red-500 p-2 rounded-lg"
+              className="bg-red-50)0 rounded-lg w-3/4 text-center font-bold shadow-lg m-4 p-4"
             >
-              Window on right side will pop up, please wait to get the answer, after that you can ask for help again in same window.
+              Window on right side will pop up, please wait to get the answer,
+              after that you can ask for help again in same window.
             </motion.button>
           )}
         </motion.div>

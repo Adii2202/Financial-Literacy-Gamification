@@ -4,6 +4,7 @@ from langchain.prompts import PromptTemplate
 from flask import Flask, jsonify, request
 from langchain_community.llms import HuggingFaceHub
 from flask_cors import CORS
+import yfinance as yf
 import os
 
 from dotenv import load_dotenv, get_key
@@ -25,6 +26,26 @@ llm = HuggingFaceHub(
         "repetition_penalty": 1.03,
     },
 )
+def get_hist_data(symbol):
+    stock = yf.Ticker(symbol)
+    hist = stock.history(period="1y")
+    # Reset index to get the Date as a column
+    hist.reset_index(inplace=True)
+    # Convert Date to string format to ensure JSON serializable
+    hist['Date'] = hist['Date'].dt.strftime('%Y-%m-%d')
+    return hist.to_json(orient='records')
+
+@app.route('/get_historical_data', methods=['GET'])
+def get_historical_data():
+    symbol = request.args.get('symbol')
+    if symbol is None:
+        return jsonify({"error": "Symbol parameter is missing"}), 400
+    try:
+        historical_data = get_hist_data(symbol)
+        return historical_data
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 def chatwithbot(txt:str):
     chat_model = ChatHuggingFace(llm=llm)
