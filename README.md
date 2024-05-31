@@ -62,6 +62,9 @@ Integrated a personal assistant chatbot and a Financial document chat support wh
 - `Retrieval Augmented Reality(RAG)`
 - `qDrant` 
 
+### Database
+- `MongoDb Atlas`
+
 ## Overview Video
 [[Video Demo]](#)
 
