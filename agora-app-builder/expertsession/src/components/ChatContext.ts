@@ -10,8 +10,8 @@
 *********************************************
 */
 import RtmEngine from 'agora-react-native-rtm';
-import { UidType } from '../../agora-rn-uikit';
-import { createContext, SetStateAction } from 'react';
+import {UidType} from '../../agora-rn-uikit';
+import {createContext, SetStateAction} from 'react';
 
 export interface ChatBubbleProps {
   isLocal: boolean;
@@ -66,7 +66,6 @@ export enum controlMessageEnum {
   requestAudio = '7',
   //newUserJoined = '8',
   kickScreenshare = '9',
-  initiatePoll = '8'
 }
 
 const ChatContext = createContext(null as unknown as chatContext);

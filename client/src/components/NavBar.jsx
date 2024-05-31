@@ -14,13 +14,12 @@ import EmailIcon from "@mui/icons-material/Email";
 import { Leaderboard, Logout, Person, Stream } from "@mui/icons-material";
 import { AiOutlineProfile } from "react-icons/ai";
 import { RiProfileLine } from "react-icons/ri";
-import SmallCard from "./Card";
-// import Example from "./Card";
 
 const navigation = [
   { name: "Home", href: "/home", current: false },
   { name: "Financial Habits", href: "/tasks", current: false },
   { name: "Smart Investing", href: "/stock", current: false },
+  // { name: "Smart Savings", href: "/savings", current: false },
   { name: "Learning", href: "/learning", current: false },
   { name: "Party", href: "/party", current: false },
   { name: "Blog", href: "/blog", current: false },
@@ -56,12 +55,6 @@ function NavBar() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  // const handleUpcomingEvents = (e) => {
-  //   // Handle click for upcoming events button
-  //   // Add your logic here
-  //   e.preventDefault();
-  // };
 
   useEffect(() => {
     const curr = JSON.parse(localStorage.getItem("user"));
@@ -100,15 +93,15 @@ function NavBar() {
                     alt="Your Company"
                   />
                   <span className="font-bold text-white  tracking-wide ml-2 text-xl">
-                    INNOSAVE
+                    Innosave
                   </span>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <button
+                      <a
                         key={item.name}
-                        onClick={item.onClick}
+                        href={item.href}
                         className={classNames(
                           item.href === path
                             ? "bg-gray-900 underline font-bold"
@@ -118,26 +111,20 @@ function NavBar() {
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </button>
+                      </a>
                     ))}
-                  </div>
-                </div>
-                <div className="relative group">
-                  <button
-                    type="button"
-                    className="relative rounded-full bg-white p-1 text-gray-400 hover:text- focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only ">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
-                  <div className="absolute top-full bg-white shadow-lg p-2 w-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md">
-                    {/* Your card content here */}
-                    <SmallCard />
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                {/* <button
+                  type="button"
+                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                >
+                  <span className="absolute -inset-1.5" />
+                  <span className="sr-only">View notifications</span>
+                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                </button> */}
                 {mopen && <DailyModal open={mopen} handleClose={handleClose} />}
                 {nopen && (
                   <NotiModal
@@ -271,8 +258,8 @@ function NavBar() {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  as="button"
-                  onClick={item.onClick}
+                  as="a"
+                  href={item.href}
                   className={classNames(
                     item.current
                       ? "bg-gray-900 text-white"

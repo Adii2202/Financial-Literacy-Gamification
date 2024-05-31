@@ -13,7 +13,6 @@ import React, {useState, useContext} from 'react';
 import {Platform} from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
 import AppWrapper from './AppWrapper';
-import PollContextProvider from './components/PollContext';
 import {
   RoomInfoContextInterface,
   RoomInfoDefaultValue,
@@ -79,19 +78,15 @@ const App: React.FC = () => {
     useState<RoomInfoContextInterface>(RoomInfoDefaultValue);
 
   return (
-    <>
-      <PollContextProvider>
-        <AppWrapper>
-          <SetRoomInfoProvider value={{setRoomInfo}}>
-            <RoomInfoProvider value={{...roomInfo}}>
-              <ShareLinkProvider>
-                <AppRoutes />
-              </ShareLinkProvider>
-            </RoomInfoProvider>
-          </SetRoomInfoProvider>
-        </AppWrapper>
-      </PollContextProvider>
-    </>
+    <AppWrapper>
+      <SetRoomInfoProvider value={{setRoomInfo}}>
+        <RoomInfoProvider value={{...roomInfo}}>
+          <ShareLinkProvider>
+            <AppRoutes />
+          </ShareLinkProvider>
+        </RoomInfoProvider>
+      </SetRoomInfoProvider>
+    </AppWrapper>
   );
 };
 

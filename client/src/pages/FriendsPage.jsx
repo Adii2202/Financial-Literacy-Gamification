@@ -66,12 +66,12 @@ const LeaderBoard = () => {
                   >
                     <TableCell>{user.name}</TableCell>
                     <TableCell>{user.email}</TableCell>
-                    <TableCell>{user.blessons.score}</TableCell>
+                    <TableCell>{user.coins}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
-            <p>Your Rank: {currentUserRank + 1}</p>
+            {/* <p>Your Rank: {currentUserRank + 1}</p> */}
           </TableContainer>
         </motion.div>
       )}

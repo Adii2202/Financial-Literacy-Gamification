@@ -26,7 +26,6 @@ import {useParams, useHistory} from '../components/Router';
 import RtmConfigure from '../components/RTMConfigure';
 import DeviceConfigure from '../components/DeviceConfigure';
 import Logo from '../subComponents/Logo';
-import Poll from '../components/Poll';
 import {
   useHasBrandLogo,
   isArray,
@@ -424,26 +423,21 @@ const VideoCall: React.FC = () => {
                                                           )}
                                                           <VBProvider>
                                                             <SdkMuteToggleListener>
-                                                              {callActive && (
-                                                                <Poll />
-                                                              ) ? (
-                                                                <>
-                                                                  <Poll />
-                                                                  <VideoMeetingDataProvider>
-                                                                    <VideoCallProvider>
-                                                                      <DisableChatProvider>
-                                                                        {$config.ENABLE_WHITEBOARD &&
-                                                                        isWebInternal() ? (
-                                                                          <WhiteboardConfigure>
-                                                                            <VideoCallScreen />
-                                                                          </WhiteboardConfigure>
-                                                                        ) : (
+                                                              {callActive ? (
+                                                                <VideoMeetingDataProvider>
+                                                                  <VideoCallProvider>
+                                                                    <DisableChatProvider>
+                                                                      {$config.ENABLE_WHITEBOARD &&
+                                                                      isWebInternal() ? (
+                                                                        <WhiteboardConfigure>
                                                                           <VideoCallScreen />
-                                                                        )}
-                                                                      </DisableChatProvider>
-                                                                    </VideoCallProvider>
-                                                                  </VideoMeetingDataProvider>
-                                                                </>
+                                                                        </WhiteboardConfigure>
+                                                                      ) : (
+                                                                        <VideoCallScreen />
+                                                                      )}
+                                                                    </DisableChatProvider>
+                                                                  </VideoCallProvider>
+                                                                </VideoMeetingDataProvider>
                                                               ) : $config.PRECALL ? (
                                                                 <PreCallProvider
                                                                   value={{

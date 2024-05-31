@@ -46,25 +46,25 @@ const QuestionsForm2 = () => {
     dispatch(fetchLLMInference(msg));
   };
 
-  useEffect(() => {
-    const callfirst = async () => {
-      await Api.checkQuiz({
-        email: userInfo.email,
-        lessonType: "business",
-      }).then((res) => {
-        if (res.data == "true") {
-          setCan(true);
-          toast.success("you can attempt this quiz only one time");
-        } else {
-          toast.error(
-            "You have attempted this quiz earlier but you can still see solutions"
-          );
-          setCan(false);
-        }
-      });
-    };
-    callfirst();
-  }, []);
+  // useEffect(() => {
+  //   const callfirst = async () => {
+  //     await Api.checkQuiz({
+  //       email: userInfo.email,
+  //       lessonType: "business",
+  //     }).then((res) => {
+  //       if (res.data == "true") {
+  //         setCan(true);
+  //         toast.success("you can attempt this quiz only one time");
+  //       } else {
+  //         toast.error(
+  //           "You have attempted this quiz earlier but you can still see solutions"
+  //         );
+  //         setCan(false);
+  //       }
+  //     });
+  //   };
+  //   callfirst();
+  // }, []);
 
   const removeselection = () => {
     setAnswers({ ...answers, [currentQuestion]: "" });
